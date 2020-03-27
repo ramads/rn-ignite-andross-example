@@ -2,7 +2,7 @@
 import apisauce from 'apisauce'
 
 // our "constructor"
-const create = (baseURL = 'https://api.github.com/') => {
+const create = (baseURL = 'https://api.themoviedb.org/3/') => {
   // ------
   // STEP 1
   // ------
@@ -37,6 +37,10 @@ const create = (baseURL = 'https://api.github.com/') => {
   const getRoot = () => api.get('')
   const getRate = () => api.get('rate_limit')
   const getUser = (username) => api.get('search/users', {q: username})
+  const getPopular = () => {
+    console.log("popular jalan!");
+    return api.get('movie/popular', {api_key: '202b2b6d8fddbe7644c12ebfcb4939de'});
+  }
 
   // ------
   // STEP 3
@@ -54,7 +58,8 @@ const create = (baseURL = 'https://api.github.com/') => {
     // a list of the API functions from step 2
     getRoot,
     getRate,
-    getUser
+    getUser,
+    getPopular
   }
 }
 
